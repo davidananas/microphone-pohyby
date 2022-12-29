@@ -1,9 +1,10 @@
 input.onButtonPressed(Button.A, function () {
+    kitronik_servo_lite.backward()
     strip.showColor(neopixel.colors(NeoPixelColors.Yellow))
     basic.showArrow(ArrowNames.South)
-    kitronik_servo_lite.backward()
 })
 input.onSound(DetectedSound.Loud, function () {
+    kitronik_servo_lite.stop()
     strip.showColor(neopixel.colors(NeoPixelColors.Red))
     basic.showLeds(`
         . . . . .
@@ -12,14 +13,14 @@ input.onSound(DetectedSound.Loud, function () {
         . . . . .
         . . . . .
         `)
-    kitronik_servo_lite.stop()
 })
 input.onSound(DetectedSound.Quiet, function () {
+    kitronik_servo_lite.forward()
     strip.showColor(neopixel.colors(NeoPixelColors.Green))
     basic.showArrow(ArrowNames.North)
-    kitronik_servo_lite.forward()
 })
 input.onLogoEvent(TouchButtonEvent.Pressed, function () {
+    kitronik_servo_lite.stop()
     strip.showColor(neopixel.colors(NeoPixelColors.Red))
     basic.showLeds(`
         . . . . .
@@ -28,7 +29,6 @@ input.onLogoEvent(TouchButtonEvent.Pressed, function () {
         . . . . .
         . . . . .
         `)
-    kitronik_servo_lite.stop()
 })
 let strip: neopixel.Strip = null
 strip = neopixel.create(DigitalPin.P0, 5, NeoPixelMode.RGB)

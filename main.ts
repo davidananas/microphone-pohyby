@@ -4,6 +4,11 @@ input.onButtonPressed(Button.A, function () {
     basic.showArrow(ArrowNames.South)
 })
 input.onSound(DetectedSound.Loud, function () {
+    kitronik_servo_lite.forward()
+    strip.showColor(neopixel.colors(NeoPixelColors.Green))
+    basic.showArrow(ArrowNames.North)
+})
+input.onSound(DetectedSound.Quiet, function () {
     kitronik_servo_lite.stop()
     strip.showColor(neopixel.colors(NeoPixelColors.Red))
     basic.showLeds(`
@@ -13,11 +18,6 @@ input.onSound(DetectedSound.Loud, function () {
         . . . . .
         . . . . .
         `)
-})
-input.onSound(DetectedSound.Quiet, function () {
-    kitronik_servo_lite.forward()
-    strip.showColor(neopixel.colors(NeoPixelColors.Green))
-    basic.showArrow(ArrowNames.North)
 })
 input.onLogoEvent(TouchButtonEvent.Pressed, function () {
     kitronik_servo_lite.stop()
